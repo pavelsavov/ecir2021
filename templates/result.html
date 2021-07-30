@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+   <body>
+    Predicted Year: {{ year|round|int }}
+    <br/>
+    {% for s, y in sents %}
+        {% if y < year %}
+            <span style="background-color:rgba(255,0,0,{{ (year - y) / (year - min_year) }})" title="{{ y }}">{{ s }}</span>
+        {% else %}
+            <span style="background-color:rgba(0,255,0,{{ (y - year) / (max_year - year)  }})" title="{{ y }}">{{ s }}</span>
+        {% endif %}
+    {% endfor %}
+   </body>
+</html>
